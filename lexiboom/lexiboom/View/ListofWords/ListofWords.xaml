@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:this="clr-namespace:lexiboom.ViewModel.ListofWordsViewModel"
              x:Class="lexiboom.View.ListofWords.ListofWords"
-             Title="Mother Tonge"
-             BindingContext="{x:Static this:MotherTongeWords.listofWordsList}">
+             Title="Mother Tongue">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+"
                      Order="Primary"
-                     Command="OnAddClicked"/>
+                     Activated="OnAddClicked"/>
     </ContentPage.ToolbarItems>
     
     <StackLayout>
-        <ListView ItemsSource="{Binding .}">
+        <ListView ItemsSource="{Binding Source={x:Static this:MotherTongeWords.listofWordsList},
+            Path=.}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Word}"

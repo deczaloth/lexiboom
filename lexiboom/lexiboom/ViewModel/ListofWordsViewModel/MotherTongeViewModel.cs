@@ -16,7 +16,7 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         public MotherTongeWords()
         {
             SaveWordCommand = new Command(async ()=> await SaveWord());
-            OnAddClickedCommand = new Command(OnAddClicked);
+            OnAddClickedCommand = new Command((sender)=> OnAddClicked(sender));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -41,7 +41,7 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         public Command SaveWordCommand { get; }
         public Command OnAddClickedCommand { get; set; }
 
-        async void OnAddClicked()
+        async void OnAddClicked(object sender)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new ListofWordsAddWord());
         }

@@ -9,8 +9,11 @@ namespace lexiboom
 {
 	public class App : Application
 	{
+        public static ViewModel.ListofWordsViewModel.MotherTongeWords MotherTonge;
 		public App ()
 		{
+            MotherTonge = new ViewModel.ListofWordsViewModel.MotherTongeWords();
+
             // The root page of your application
             MainPage = new View.MasterDetail();
 		}

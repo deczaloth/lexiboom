@@ -9,11 +9,9 @@ namespace lexiboom.View.ListofWords
 {
 	public partial class ListofWords : ContentPage
 	{
-        public static MotherTongeWords MotherTongeWords;
 		public ListofWords ()
 		{
-            MotherTongeWords = new MotherTongeWords();
-
+            BindingContext = App.MotherTonge;
 			InitializeComponent ();
 		}
 
