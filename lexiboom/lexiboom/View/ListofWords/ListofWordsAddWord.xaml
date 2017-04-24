@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:this="clr-namespace:lexiboom.View.ListofWords"
+             x:Class="lexiboom.View.ListofWords.ListofWordsAddWord"
+             BindingContext="{x:Static this:ListofWordsAddWord.MotherTonge}"
+             Title="Add a new word to your Lexicon">
+    <StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Word"/>
+            <Entry Placeholder="Your word to learn"
+                   Text="{Binding Word}"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Context"/>
+            <Entry Placeholder="Context in which you found the word."
+                   Text="{Binding Context}"/>
+        </StackLayout>
+        <Button Text="Add to collection"
+                VerticalOptions="CenterAndExpand"
+                Command="{Binding SaveWordCommand}"/>
+    </StackLayout>
+	
+</ContentPage>

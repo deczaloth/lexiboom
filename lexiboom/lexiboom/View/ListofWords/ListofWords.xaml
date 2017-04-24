@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:this="clr-namespace:lexiboom.ViewModel.ListofWordsViewModel"
+             x:Class="lexiboom.View.ListofWords.ListofWords"
+             Title="Mother Tonge"
+             BindingContext="{x:Static this:MotherTongeWords.listofWordsList}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                     Order="Primary"
+                     Command="OnAddClicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout>
+        <ListView ItemsSource="{Binding .}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Word}"
+                              Detail="{Binding Context}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
