@@ -11,12 +11,14 @@
     </ContentPage.ToolbarItems>
     
     <StackLayout>
-        <ListView ItemsSource="{Binding Source={x:Static this:MotherTongeWords.listofWordsList},
-            Path=.}">
+        <ListView x:Name="listView"
+                  ItemsSource="{Binding Source={x:Static this:MotherTongeWords.listofWordsList},
+                                        Path=.}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Word}"
-                              Detail="{Binding Context}"/>
+                              Detail="{Binding Context}"
+                              Tapped="TextCell_Tapped"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

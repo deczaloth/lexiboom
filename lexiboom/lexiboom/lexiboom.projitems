@@ -26,6 +26,9 @@
       <DependentUpon>ListofWordsAddWord.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\ListofWords\ListofWordsEditWord.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\ListofWords\OtherLanguages.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>OtherLanguages.xaml</DependentUpon>
@@ -35,6 +38,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)GettingStarted.Xamarin" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\ListofWordsEditWord.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\ListofWords.xaml">
