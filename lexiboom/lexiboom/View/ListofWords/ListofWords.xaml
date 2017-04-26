@@ -16,11 +16,11 @@
                                         Path=.}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Word}"
+                    <TextCell Text="{Binding Word}" 
                               Detail="{Binding Context}"
                               Tapped="TextCell_Tapped"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackLayout>
+    </StackLayout> 
 </ContentPage>

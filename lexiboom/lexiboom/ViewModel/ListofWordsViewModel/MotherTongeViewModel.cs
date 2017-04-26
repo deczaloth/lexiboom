@@ -28,8 +28,30 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         public static ObservableCollection<MotherTongeWords> listofWordsList = new ObservableCollection<MotherTongeWords>();
         public string GUID { get; set; }
         public string Type { get; set; }
-        public string Word { get; set; }
-        public string Context { get; set; }
+        public string _Word;
+        public string Word
+        {
+            get { return _Word; }
+            set
+            {
+                _Word = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        private string _Context;
+        public string Context
+        {
+            get { return _Context; }
+            set
+            {
+                _Context = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         public string Synonyms { get; set; }
         public int Points { get; set; }
         
@@ -53,6 +75,7 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             word.Context = Context;
             listofWordsList.Add(word);
             await Application.Current.MainPage.DisplayAlert("Save Word", "Your new word has been added", "Ok");
+            Word = ""; Context = "";
         }
 
     }

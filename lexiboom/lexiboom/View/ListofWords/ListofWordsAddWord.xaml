@@ -9,7 +9,7 @@
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label Text="Word"/>
             <Entry Placeholder="Your word to learn"
-                   Text="{Binding Word}"/>
+                   Text="{Binding Word, Mode=TwoWay}"/>
         </StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label Text="Context"/>

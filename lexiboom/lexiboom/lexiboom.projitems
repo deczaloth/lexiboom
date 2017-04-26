@@ -37,7 +37,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\MenuPage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)GettingStarted.Xamarin" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\ListofWordsEditWord.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
