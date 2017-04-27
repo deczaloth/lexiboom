@@ -8,6 +8,7 @@ using lexiboom.View;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using lexiboom.View.ListofWords;
+using SQLite;
 
 namespace lexiboom.ViewModel.ListofWordsViewModel
 {
@@ -28,7 +29,9 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         public static ObservableCollection<MotherTongeWords> listofWordsList = new ObservableCollection<MotherTongeWords>();
         public string GUID { get; set; }
         public string Type { get; set; }
+
         public string _Word;
+        [PrimaryKey, AutoIncrement]
         public string Word
         {
             get { return _Word; }
@@ -73,7 +76,15 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             MotherTongeWords word = new MotherTongeWords();
             word.Word = Word;
             word.Context = Context;
-            listofWordsList.Add(word);
+            App.Storage.listofWordsList.Add(word);
+            try
+            {
+                App.Storage.connection.InsertAsync(word).ContinueWith(t => { Console.WriteLine("New word: {0}", word.Word); });
+            }
+            catch
+            {
+                Console.WriteLine("Error mio");
+            }
             await Application.Current.MainPage.DisplayAlert("Save Word", "Your new word has been added", "Ok");
             Word = ""; Context = "";
         }

@@ -10,11 +10,11 @@ namespace lexiboom.View.ListofWords
 {
 	public partial class ListofWordsAddWord : ContentPage
 	{
-        static MotherTongeWords MotherTonge;
+        public static MotherTongeWords MotherTongue;
 
         public ListofWordsAddWord ()
 		{
-            MotherTonge = new MotherTongeWords();
+            MotherTongue = new MotherTongeWords();
 			InitializeComponent ();
 		}
 	}

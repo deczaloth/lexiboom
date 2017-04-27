@@ -17,7 +17,7 @@ namespace lexiboom.View.ListofWords
 
         public ListofWords ()
 		{
-            BindingContext = App.MotherTonge;
+            BindingContext = App.Storage.listofWordsList;
 			InitializeComponent ();
 		}
 

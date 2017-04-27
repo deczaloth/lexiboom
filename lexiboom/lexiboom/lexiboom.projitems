@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Query.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Storage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\MotherTongeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MasterPageItem.cs" />
@@ -37,11 +38,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\MenuPage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\ListofWordsEditWord.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\ListofWords.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -60,6 +56,11 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\ListofWordsAddWord.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\ListofWordsEditWord.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

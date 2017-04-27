@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:this="clr-namespace:lexiboom.View.ListofWords"
              x:Class="lexiboom.View.ListofWords.ListofWordsAddWord"
-             BindingContext="{x:Static this:ListofWordsAddWord.MotherTonge}"
+             BindingContext="{x:Static this:ListofWordsAddWord.MotherTongue}"
              Title="Add a new word to your Lexicon">
     <StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand">
