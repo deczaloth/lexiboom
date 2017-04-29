@@ -19,11 +19,27 @@ namespace lexiboom.View.ListofWords
 		{
             BindingContext = App.Storage.listofWordsList;
 			InitializeComponent ();
+
+            //App.Storage.Query();
 		}
+
+        async void OnCardsClicked(object sender, EventArgs args)
+        {
+            if (listView.SelectedItem != null)
+                await Navigation.PushAsync(new CardPage((MotherTongeWords)listView.SelectedItem));
+            else
+                await DisplayAlert("Error", "It seems that no row was selected. Select a row and try again!", "Ok");
+        }
 
         async void OnAddClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ListofWordsAddWord());
+        }
+
+        void OnRemoveClicked(object sender, EventArgs e)
+        {
+            App.Storage.connection.DeleteAsync(listView.SelectedItem);
+            App.Storage.listofWordsList.Remove((MotherTongeWords)listView.SelectedItem);
         }
 
         public async void TextCell_Tapped(object sender, EventArgs e)

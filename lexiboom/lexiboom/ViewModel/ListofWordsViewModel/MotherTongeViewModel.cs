@@ -26,12 +26,13 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public static ObservableCollection<MotherTongeWords> listofWordsList = new ObservableCollection<MotherTongeWords>();
-        public string GUID { get; set; }
+
+        //public static ObservableCollection<MotherTongeWords> listofWordsList = new ObservableCollection<MotherTongeWords>();
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Type { get; set; }
 
         public string _Word;
-        [PrimaryKey, AutoIncrement]
         public string Word
         {
             get { return _Word; }
@@ -54,16 +55,16 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
                 OnPropertyChanged();
             }
         }
-
-        public string Synonyms { get; set; }
         public int Points { get; set; }
         
         public override string ToString()
         {
-            return Word;
+            return string.Format("{0}: {1}; Id: {2}; Type: {3}; Points: {4}", Word, Context, Id, Type, Points);
         }
 
+        [Ignore]
         public Command SaveWordCommand { get; }
+        [Ignore]
         public Command OnAddClickedCommand { get; set; }
 
         async void OnAddClicked(object sender)
@@ -76,16 +77,18 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             MotherTongeWords word = new MotherTongeWords();
             word.Word = Word;
             word.Context = Context;
+            word.Type = "MotherTongue";
+            word.Points = 0;
             App.Storage.listofWordsList.Add(word);
             try
             {
-                App.Storage.connection.InsertAsync(word).ContinueWith(t => { Console.WriteLine("New word: {0}", word.Word); });
+                await App.Storage.connection.InsertAsync(word);
             }
             catch
             {
                 Console.WriteLine("Error mio");
             }
-            await Application.Current.MainPage.DisplayAlert("Save Word", "Your new word has been added", "Ok");
+            await Application.Current.MainPage.DisplayAlert("Save Word", "Your new word has been added. " + string.Format("Details: {0}", word.ToString()), "Ok");
             Word = ""; Context = "";
         }
 

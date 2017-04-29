@@ -19,7 +19,7 @@ namespace lexiboom.Model.Storage
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             connection = new SQLiteAsyncConnection(System.IO.Path.Combine(folder,"words.db"));
 
-            connection.CreateTableAsync<MotherTongeWords>().ContinueWith(t => { Console.WriteLine("Tabla creada!"); });
+            connection.CreateTableAsync<MotherTongeWords>();
 
             Query();
         }

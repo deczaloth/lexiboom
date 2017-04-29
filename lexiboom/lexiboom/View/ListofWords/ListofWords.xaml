@@ -5,9 +5,15 @@
              x:Class="lexiboom.View.ListofWords.ListofWords"
              Title="Mother Tongue">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cards"
+                     Order="Primary"
+                     Activated="OnCardsClicked"/>
         <ToolbarItem Text="+"
                      Order="Primary"
                      Activated="OnAddClicked"/>
+        <ToolbarItem Text="-"
+                     Order="Primary"
+                     Activated="OnRemoveClicked"/>
     </ContentPage.ToolbarItems>
     
     <StackLayout>
