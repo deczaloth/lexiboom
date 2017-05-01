@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using lexiboom.View.ListofWords;
 using SQLite;
+using System.Globalization;
 
 namespace lexiboom.ViewModel.ListofWordsViewModel
 {
@@ -30,7 +31,18 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         //public static ObservableCollection<MotherTongeWords> listofWordsList = new ObservableCollection<MotherTongeWords>();
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Type { get; set; }
+        
+        public int _Type;
+        public int Type
+        {
+            get { return _Type; }
+            set
+            {
+                _Type = value;
+
+                OnPropertyChanged();
+            }
+        }
 
         public string _Word;
         public string Word
@@ -59,7 +71,7 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         
         public override string ToString()
         {
-            return string.Format("{0}: {1}; Id: {2}; Type: {3}; Points: {4}", Word, Context, Id, Type, Points);
+            return string.Format("{0}: {1}; Id: {2}; Type: {3}; Points: {4}", Word, Context, Id, App.Configuration.LanguageList[Type], Points);
         }
 
         [Ignore]
@@ -69,7 +81,8 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
 
         async void OnAddClicked(object sender)
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new ListofWordsAddWord());
+            
+            //await Application.Current.MainPage.Navigation.PushAsync(new ListofWordsAddWord());
         }
 
         async Task SaveWord()
@@ -77,7 +90,7 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             MotherTongeWords word = new MotherTongeWords();
             word.Word = Word;
             word.Context = Context;
-            word.Type = "MotherTongue";
+            word.Type = Type;
             word.Points = 0;
             App.Storage.listofWordsList.Add(word);
             try
@@ -92,5 +105,20 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             Word = ""; Context = "";
         }
 
+        
+    }
+    public class PickerSelectedIndexToLanguageNameonList : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (App.Configuration.LanguageList.Count >= 1)
+                return App.Configuration.LanguageList[(int)value];
+            else return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return false;
+        }
     }
 }

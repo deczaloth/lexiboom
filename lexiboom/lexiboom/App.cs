@@ -12,10 +12,12 @@ namespace lexiboom
 	public class App : Application
 	{
         public static ViewModel.ListofWordsViewModel.MotherTongeWords MotherTonge;
+        public static ViewModel.ConfigurationViewModel.ConfigurationViewModel Configuration;
         public static Model.Storage.Storage Storage;
 		public App ()
 		{
             MotherTonge = new ViewModel.ListofWordsViewModel.MotherTongeWords();
+            Configuration = new ViewModel.ConfigurationViewModel.ConfigurationViewModel();
             Storage = new Model.Storage.Storage();
 
             // The root page of your application

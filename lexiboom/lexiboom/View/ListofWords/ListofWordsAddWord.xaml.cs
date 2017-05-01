@@ -12,10 +12,12 @@ namespace lexiboom.View.ListofWords
 	{
         public static MotherTongeWords MotherTongue;
 
-        public ListofWordsAddWord ()
+        public ListofWordsAddWord (int Type)
 		{
+            
             MotherTongue = new MotherTongeWords();
 			InitializeComponent ();
+            MotherTongue.Type = Type;
 		}
 	}
 }

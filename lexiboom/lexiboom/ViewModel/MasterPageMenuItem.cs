@@ -6,6 +6,8 @@ namespace lexiboom.ViewModel
 {
     public class MasterPageMenuItem : List<MasterPageItem>
     {
+        public static List<MasterPageMenuItem> groups;
+
         private MasterPageMenuItem(string groupName)
         {
             this.GroupName = groupName;
@@ -15,13 +17,15 @@ namespace lexiboom.ViewModel
 
         static MasterPageMenuItem()
         {
-            List<MasterPageMenuItem> groups = new List<MasterPageMenuItem>
+            groups = new List<MasterPageMenuItem>
             {
                 new MasterPageMenuItem("List of Words"),
-                
+                new MasterPageMenuItem("Configuration")
+
             };
 
             groups[0].Add(new MasterPageItem("Words", () => new ListofWords()));
+            groups[1].Add(new MasterPageItem("Languages Configuration", () => new View.Configuration.Configuration()));
             
 
             All = groups;

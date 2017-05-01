@@ -8,33 +8,18 @@ using lexiboom.ViewModel.ListofWordsViewModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
 
 namespace lexiboom.View.ListofWords
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CardPage : ContentPage
+	public partial class CardPage : CarouselPage
 	{
-        int index;
-		public CardPage (MotherTongeWords word)
+        public CardPage (MotherTongeWords word)
 		{
-            index = App.Storage.listofWordsList.IndexOf(word);
+            InitializeComponent();
 
-            BindingContext = App.Storage.listofWordsList;
-			InitializeComponent ();
-
-            cardText.Text = App.Storage.listofWordsList[index].Word;
-            cardContext.Text = App.Storage.listofWordsList[index].Context;
-		}
-
-        void OnButtonNextClicked(object sender, EventArgs args)
-        {
-            if (index == App.Storage.listofWordsList.Count - 1)
-                index = 0;
-            else
-                index++;
-            cardText.Text = App.Storage.listofWordsList[index].Word;
-            cardContext.Text = App.Storage.listofWordsList[index].Context;
-        }
-
+            ItemsSource = App.Storage.listofWordsList;
+        }        
     }
 }

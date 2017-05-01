@@ -9,9 +9,9 @@ namespace lexiboom.Model.Storage
 {
     public partial class Storage
     {
-        public void Query()
+        public void Query(int type)
         {
-            var query = connection.Table<MotherTongeWords>();
+            var query = connection.Table<MotherTongeWords>().Where(v=>v.Type == type);
             try
             {
                 query.ToListAsync().ContinueWith(t =>

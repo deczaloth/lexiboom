@@ -21,7 +21,7 @@ namespace lexiboom.Model.Storage
 
             connection.CreateTableAsync<MotherTongeWords>();
 
-            Query();
+            //Query();
         }
          
     }

@@ -12,9 +12,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Query.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Storage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ConfigurationViewModel\ConfigurationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\MotherTongeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MasterPageMenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Configuration\Configuration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -69,6 +73,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\CardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Configuration\Configuration.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

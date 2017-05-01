@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:MotherTongue="clr-namespace:lexiboom.ViewModel.ListofWordsViewModel"
              xmlns:this="clr-namespace:lexiboom"
              x:Class="lexiboom.View.ListofWords.ListofWords"
              Title="Mother Tongue">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <MotherTongue:PickerSelectedIndexToLanguageNameonList x:Key="IndexToLanguageName"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cards"
                      Order="Primary"
@@ -27,5 +33,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Picker x:Name="languageSelectorPicker"
+                Title="{Binding Type, Converter={StaticResource IndexToLanguageName}}"
+                SelectedIndex="{Binding Type, Mode=TwoWay}"
+                SelectedIndexChanged="languageSelectorPicker_SelectedIndexChanged"
+                IsVisible="False"/>
     </StackLayout> 
 </ContentPage>

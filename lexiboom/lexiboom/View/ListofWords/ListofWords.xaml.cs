@@ -16,10 +16,20 @@ namespace lexiboom.View.ListofWords
         string palabra="";
 
         public ListofWords ()
-		{
-            BindingContext = App.Storage.listofWordsList;
+		{            
 			InitializeComponent ();
 
+            BindingContext = App.Storage.listofWordsList;
+            languageSelectorPicker.BindingContext = App.MotherTonge;
+
+            if (App.Configuration.LanguageList.Count>=1)
+            {
+                for (int i = 0; i < App.Configuration.LanguageList.Count; i++)
+                    languageSelectorPicker.Items.Add(App.Configuration.LanguageList[i]);
+                languageSelectorPicker.IsVisible = true;
+                languageSelectorPicker.SelectedIndex = 0;
+            }
+            
             //App.Storage.Query();
 		}
 
@@ -33,13 +43,24 @@ namespace lexiboom.View.ListofWords
 
         async void OnAddClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ListofWordsAddWord());
+            if (App.Configuration.LanguageList.Count >= 1)
+            {
+                if (languageSelectorPicker.SelectedItem != null)
+                    await Navigation.PushAsync(new ListofWordsAddWord(languageSelectorPicker.SelectedIndex));
+                else await DisplayAlert("Error", "Please select a language to improve", "Ok");
+            }
+            else
+                await DisplayAlert("No language selected", "It seems that you have not added a language to improve yet. Please go to the \"Configuration\" menu and add at least one Language.", "Ok");            
         }
 
-        void OnRemoveClicked(object sender, EventArgs e)
+        async void OnRemoveClicked(object sender, EventArgs e)
         {
-            App.Storage.connection.DeleteAsync(listView.SelectedItem);
-            App.Storage.listofWordsList.Remove((MotherTongeWords)listView.SelectedItem);
+            bool answer = await DisplayAlert("Remove word?", "Are you sure you want to get rid of this word?", "Yes", "No");
+            if(answer)
+            {
+                await App.Storage.connection.DeleteAsync(listView.SelectedItem);
+                App.Storage.listofWordsList.Remove((MotherTongeWords)listView.SelectedItem);
+            }            
         }
 
         public async void TextCell_Tapped(object sender, EventArgs e)
@@ -75,6 +96,13 @@ namespace lexiboom.View.ListofWords
                 // Push the edition page.
                 await Navigation.PushAsync(new ListofWordsEditWord());
             }
+        }
+
+        private void languageSelectorPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            App.Storage.listofWordsList.Clear();
+            //if(languageSelectorPicker.SelectedItem!= null)
+                App.Storage.Query(languageSelectorPicker.SelectedIndex);
         }
     }
 }
