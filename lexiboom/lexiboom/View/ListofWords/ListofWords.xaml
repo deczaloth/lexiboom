@@ -7,7 +7,7 @@
              Title="Mother Tongue">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <MotherTongue:PickerSelectedIndexToLanguageNameonList x:Key="IndexToLanguageName"/>
+            <MotherTongue:LanguageToPickerSelectedIndex x:Key="LanguageNameToIndex"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -34,8 +34,9 @@
             </ListView.ItemTemplate>
         </ListView>
         <Picker x:Name="languageSelectorPicker"
-                Title="{Binding Type, Converter={StaticResource IndexToLanguageName}}"
-                SelectedIndex="{Binding Type, Mode=TwoWay}"
+                Title="{Binding Type}"
+                SelectedIndex="{Binding Type, Mode=TwoWay, 
+                                        Converter={StaticResource LanguageNameToIndex}}"
                 SelectedIndexChanged="languageSelectorPicker_SelectedIndexChanged"
                 IsVisible="False"/>
     </StackLayout> 

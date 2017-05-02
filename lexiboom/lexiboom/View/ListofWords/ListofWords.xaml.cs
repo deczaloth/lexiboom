@@ -35,7 +35,7 @@ namespace lexiboom.View.ListofWords
 
         async void OnCardsClicked(object sender, EventArgs args)
         {
-            if (listView.SelectedItem != null)
+            if (listView.SelectedItem != null)  
                 await Navigation.PushAsync(new CardPage((MotherTongeWords)listView.SelectedItem));
             else
                 await DisplayAlert("Error", "It seems that no row was selected. Select a row and try again!", "Ok");
@@ -100,9 +100,10 @@ namespace lexiboom.View.ListofWords
 
         private void languageSelectorPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listView.SelectedItem = null;
             App.Storage.listofWordsList.Clear();
             //if(languageSelectorPicker.SelectedItem!= null)
-                App.Storage.Query(languageSelectorPicker.SelectedIndex);
+                App.Storage.Query(languageSelectorPicker.SelectedItem.ToString());
         }
     }
 }

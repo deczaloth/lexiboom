@@ -32,6 +32,16 @@ namespace lexiboom.View.Configuration
                 var newLanguage = await UserDialogs.Instance.PromptAsync(languageEntryUserDialog);
                 if (newLanguage.Ok)
                 {
+                    ViewModel.ListofWordsViewModel.MotherTongeBase language = new ViewModel.ListofWordsViewModel.MotherTongeBase();
+                    language.Type = newLanguage.Text;
+                    try
+                    {
+                        await App.Storage.connection.InsertAsync(language);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error mio");
+                    }
                     App.Configuration.LanguageList.Add(newLanguage.Text);
                     await DisplayAlert("Language added!", "Your new language has been successfuly added. You can now go to \"Words\" section and select it to start adding words. Boom!", "Ok");
                 }

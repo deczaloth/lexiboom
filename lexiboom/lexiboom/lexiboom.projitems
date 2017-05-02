@@ -14,6 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Storage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ConfigurationViewModel\ConfigurationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\MotherTongeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\MotherTongeViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MasterPageMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Configuration\Configuration.xaml.cs">

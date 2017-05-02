@@ -13,7 +13,7 @@ using System.Globalization;
 
 namespace lexiboom.ViewModel.ListofWordsViewModel
 {
-    public class MotherTongeWords : INotifyPropertyChanged
+    public class MotherTongeWords : MotherTongeBase
     {
         public MotherTongeWords()
         {
@@ -21,29 +21,7 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             OnAddClickedCommand = new Command((sender)=> OnAddClicked(sender));
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-
         //public static ObservableCollection<MotherTongeWords> listofWordsList = new ObservableCollection<MotherTongeWords>();
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-        
-        public int _Type;
-        public int Type
-        {
-            get { return _Type; }
-            set
-            {
-                _Type = value;
-
-                OnPropertyChanged();
-            }
-        }
-
         public string _Word;
         public string Word
         {
@@ -71,7 +49,7 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         
         public override string ToString()
         {
-            return string.Format("{0}: {1}; Id: {2}; Type: {3}; Points: {4}", Word, Context, Id, App.Configuration.LanguageList[Type], Points);
+            return string.Format("{0}: {1}; Id: {2}; Type: {3}; Points: {4}", Word, Context, Id, Type, Points);
         }
 
         [Ignore]
@@ -107,18 +85,20 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
 
         
     }
-    public class PickerSelectedIndexToLanguageNameonList : IValueConverter
+    public class LanguageToPickerSelectedIndex : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (App.Configuration.LanguageList.Count >= 1)
-                return App.Configuration.LanguageList[(int)value];
+                return App.Configuration.LanguageList.IndexOf((string)value);
             else return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return false;
+            if (App.Configuration.LanguageList.Count >= 1)
+                return App.Configuration.LanguageList[Int16.Parse(value.ToString())];
+            else return false;
         }
     }
 }
