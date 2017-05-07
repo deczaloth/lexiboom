@@ -19,5 +19,15 @@ namespace lexiboom.View.ListofWords
 			InitializeComponent ();
             MotherTongue.Type = App.Configuration.LanguageList[indexOfThisLanguageInListOfLanguages];
 		}
-	}
+
+        async void SearchWordTranslation(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new TranslatorWebSite(WordEntry.Text));
+        }
+        async void SearchContextTranslation(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new TranslatorWebSite(ContextEntry.Text));
+        }
+
+}
 }

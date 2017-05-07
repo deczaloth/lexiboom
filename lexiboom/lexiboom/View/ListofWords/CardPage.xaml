@@ -1,21 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="lexiboom.View.ListofWords.CardPage">
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:this="clr-namespace:lexiboom.View.ListofWords"
+              xmlns:ViewModel="clr-namespace:lexiboom"
+              x:Class="lexiboom.View.ListofWords.CardPage">
+    <CarouselPage.ToolbarItems>
+        <ToolbarItem Icon="Words_Translation"
+                     Order="Primary"
+                     Activated="ShowOrHideWordsTanslations"> 
+        </ToolbarItem>
+    </CarouselPage.ToolbarItems>
+    
     <CarouselPage.ItemTemplate>
         <DataTemplate>
             <ContentPage>
-                <StackLayout>
+                <StackLayout VerticalOptions="CenterAndExpand">
                     <Label x:Name="cardText"
                            Text="{Binding Word}"
                            FontSize="Large"
-                           VerticalOptions="EndAndExpand"
                            HorizontalOptions="CenterAndExpand"/>
+                    <Label x:Name="WordTranslation"
+                           Text="Here goes the word Translation"
+                           TextColor="#00d0ff"
+                           HorizontalOptions="CenterAndExpand"
+                           BindingContext="{x:Static ViewModel:App.CardViewModel}"
+                           IsVisible="{Binding isTranslationVisible}"/>
                     <Label x:Name="cardContext"
                            Text="{Binding Context}"
                            FontSize="Medium"
-                           VerticalOptions="StartAndExpand"
                            HorizontalOptions="CenterAndExpand"/>
+                    <Label x:Name="ContextTranslation"
+                           Text="Here comes the Context Translation"
+                           TextColor="#00d0ff"
+                           HorizontalOptions="CenterAndExpand"
+                           BindingContext="{x:Static ViewModel:App.CardViewModel}"
+                           IsVisible="{Binding isTranslationVisible}"/>
                 </StackLayout>
             </ContentPage>
         </DataTemplate>

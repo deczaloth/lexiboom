@@ -13,8 +13,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Query.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Storage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ConfigurationViewModel\ConfigurationViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\CardsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\MotherTongeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\MotherTongeViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\TranslatorWebSiteViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MasterPageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MasterPageMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Configuration\Configuration.xaml.cs">
@@ -41,6 +43,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\ListofWords\OtherLanguages.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>OtherLanguages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\ListofWords\TranslatorWebSite.xaml.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\MasterPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\MenuPage.cs" />
@@ -79,6 +84,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Configuration\Configuration.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListofWords\TranslatorWebSite.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

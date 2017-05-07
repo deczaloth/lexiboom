@@ -8,14 +8,35 @@
     <StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label Text="Word"/>
-            <Entry Placeholder="Your word to learn"
+            <Entry x:Name="WordEntry" Placeholder="Your word to learn"
                    Text="{Binding Word, Mode=TwoWay}"/>
         </StackLayout>
+        
+        <StackLayout VerticalOptions="CenterAndExpand">
+        <Label Text="Word Translation"/>
+        <Entry Placeholder="Write here a translation of the word you want to learn"
+                   Text="{Binding WordTranslation, Mode=TwoWay}"/>
+        </StackLayout>
+        <Button Text="Search Word Translation"
+                VerticalOptions="CenterAndExpand"
+                Clicked="SearchWordTranslation"/>
+        
+        
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label Text="Context"/>
-            <Entry Placeholder="Context in which you found the word."
+            <Entry x:Name="ContextEntry" Placeholder="Context in which you found the word."
                    Text="{Binding Context}"/>
         </StackLayout>
+
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Context Translation"/>
+            <Entry Placeholder="Write here your translation of the given context."
+                   Text="{Binding ContextTranslation}"/>
+        </StackLayout>
+        <Button Text="Search Context Translation"
+                VerticalOptions="CenterAndExpand"
+                Clicked="SearchContextTranslation"/>
+
         <Button Text="Add to collection"
                 VerticalOptions="CenterAndExpand"
                 Command="{Binding SaveWordCommand}"/>

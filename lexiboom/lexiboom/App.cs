@@ -11,11 +11,13 @@ namespace lexiboom
 {
 	public class App : Application
 	{
+        public static ViewModel.ListofWordsViewModel.CardsViewModel CardViewModel;
         public static ViewModel.ListofWordsViewModel.MotherTongeWords MotherTonge;
         public static ViewModel.ConfigurationViewModel.ConfigurationViewModel Configuration;
         public static Model.Storage.Storage Storage;
 		public App ()
 		{
+            CardViewModel = new ViewModel.ListofWordsViewModel.CardsViewModel();
             MotherTonge = new ViewModel.ListofWordsViewModel.MotherTongeWords();
             Configuration = new ViewModel.ConfigurationViewModel.ConfigurationViewModel();
             Storage = new Model.Storage.Storage();

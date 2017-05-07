@@ -139,6 +139,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\menu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\Words_Translation.png" />
+  </ItemGroup>
   <Import Project="..\lexiboom\lexiboom.projitems" Label="Shared" Condition="Exists('..\lexiboom\lexiboom.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

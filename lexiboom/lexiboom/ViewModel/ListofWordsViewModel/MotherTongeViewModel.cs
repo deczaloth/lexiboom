@@ -34,6 +34,18 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             }
         }
 
+        private string _WordTranslation;
+        public string WordTranslation
+        {
+            get { return _WordTranslation; }
+            set
+            {
+                _WordTranslation = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         private string _Context;
         public string Context
         {
@@ -45,6 +57,19 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
                 OnPropertyChanged();
             }
         }
+
+        private string _ContextTranslation;
+        public string ContextTranslation
+        {
+            get { return _ContextTranslation; }
+            set
+            {
+                _ContextTranslation = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         public int Points { get; set; }
         
         public override string ToString()
@@ -54,6 +79,8 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
 
         [Ignore]
         public Command SaveWordCommand { get; }
+        [Ignore]
+        public Command SearchWordTranslationCommand { get; }
         [Ignore]
         public Command OnAddClickedCommand { get; set; }
 
@@ -67,7 +94,9 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         {            
             MotherTongeWords word = new MotherTongeWords();
             word.Word = Word;
+            word.WordTranslation = WordTranslation;
             word.Context = Context;
+            word.ContextTranslation = ContextTranslation;
             word.Type = Type;
             word.Points = 0;
             App.Storage.listofWordsList.Add(word);
@@ -79,9 +108,11 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             {
                 Console.WriteLine("Error mio");
             }
-            await Application.Current.MainPage.DisplayAlert("Save Word", "Your new word has been added. " + string.Format("Details: {0}", word.ToString()), "Ok");
-            Word = ""; Context = "";
+            await Application.Current.MainPage.DisplayAlert("Word Saved!", "Your new word has been added. " + string.Format("Details: {0}", word.ToString()), "Ok");
+            Word = ""; WordTranslation = ""; Context = ""; ContextTranslation = "";
         }
+
+        
 
         
     }
