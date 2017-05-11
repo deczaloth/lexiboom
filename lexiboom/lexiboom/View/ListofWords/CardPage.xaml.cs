@@ -20,13 +20,13 @@ namespace lexiboom.View.ListofWords
 		{
             CardsViewModel.isTranslationVisible = false;
             InitializeComponent();
-             BindingContext = CardsViewModel;
+            BindingContext = CardsViewModel;
             ItemsSource = App.Storage.listofWordsList;
         }
 
         void ShowOrHideWordsTanslations(object sender, EventArgs args)
         {
-            App.CardViewModel.isTranslationVisible = !App.CardViewModel.isTranslationVisible;
+            //App.CardViewModel.isTranslationVisible = !App.CardViewModel.isTranslationVisible;
         }
     }
 }

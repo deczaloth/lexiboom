@@ -38,7 +38,19 @@ namespace lexiboom.View.ListofWords
             if (listView.SelectedItem != null)  
                 await Navigation.PushAsync(new CardPage((MotherTongeWords)listView.SelectedItem));
             else
-                await DisplayAlert("Error", "It seems that no row was selected. Select a row and try again!", "Ok");
+                await DisplayAlert("Error", "It seems that no word was selected. Select a one and try again!", "Ok");
+        }
+
+        async void OnEditClicked(object sender, EventArgs e)
+        {
+            if (listView.SelectedItem == null)
+            {
+                await DisplayAlert("Edit Error", "It seems that no word was selected. Select a one and try again!", "Ok");
+            }
+            else
+            {
+                await Navigation.PushAsync(new ListofWordsEditWord(listView.SelectedItem));
+            }            
         }
 
         async void OnAddClicked(object sender, EventArgs e)
@@ -94,7 +106,7 @@ namespace lexiboom.View.ListofWords
                 // flag reseted.
                 flag = false;
                 // Push the edition page.
-                await Navigation.PushAsync(new ListofWordsEditWord());
+                await Navigation.PushAsync(new ListofWordsEditWord(listView.SelectedItem));
             }
         }
 

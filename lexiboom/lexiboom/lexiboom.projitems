@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\CRUD.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Query.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Storage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ConfigurationViewModel\ConfigurationViewModel.cs" />

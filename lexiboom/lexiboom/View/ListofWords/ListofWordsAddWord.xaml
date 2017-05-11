@@ -5,41 +5,52 @@
              x:Class="lexiboom.View.ListofWords.ListofWordsAddWord"
              BindingContext="{x:Static this:ListofWordsAddWord.MotherTongue}"
              Title="Add a new word to your Lexicon">
-    <StackLayout>
+    <StackLayout Padding="20,20">
         <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="Word"/>
-            <Entry x:Name="WordEntry" Placeholder="Your word to learn"
-                   Text="{Binding Word, Mode=TwoWay}"/>
-        </StackLayout>
-        
-        <StackLayout VerticalOptions="CenterAndExpand">
-        <Label Text="Word Translation"/>
-        <Entry Placeholder="Write here a translation of the word you want to learn"
-                   Text="{Binding WordTranslation, Mode=TwoWay}"/>
-        </StackLayout>
-        <Button Text="Search Word Translation"
-                VerticalOptions="CenterAndExpand"
-                Clicked="SearchWordTranslation"/>
-        
-        
-        <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="Context"/>
-            <Entry x:Name="ContextEntry" Placeholder="Context in which you found the word."
-                   Text="{Binding Context}"/>
+            <Label Text="Word"
+                   FontSize="Large"
+                   TextColor="#00d3d0"/>
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="WordEntry" Placeholder="Your word to learn"
+                       Text="{Binding Word, Mode=TwoWay}"
+                       FontSize="Small"
+                       HorizontalOptions="FillAndExpand"/>
+                <Button Text="Translate"
+                        VerticalOptions="CenterAndExpand"
+                        Clicked="SearchWordTranslation"
+                        HorizontalOptions="End"/>
+            </StackLayout>
+            <Label Text="Word Translation"
+                   FontSize="Medium"/>
+            <Entry Placeholder="Write a translation (or click Translate to search)"
+                   Text="{Binding WordTranslation, Mode=TwoWay}"
+                   FontSize="Small"/>
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="Context Translation"/>
-            <Entry Placeholder="Write here your translation of the given context."
-                   Text="{Binding ContextTranslation}"/>
+            <Label Text="Context"
+                   FontSize="Large"
+                   TextColor="#00d3d0"/>
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="ContextEntry" Placeholder="Context in which you found the word."
+                       Text="{Binding Context}"
+                       FontSize="Small"
+                       HorizontalOptions="FillAndExpand"/>
+                <Button Text="Translate"
+                        Clicked="SearchContextTranslation"
+                        HorizontalOptions="End"/>
+            </StackLayout>
+            <Label Text="Context Translation"
+                   FontSize="Medium"/>
+            <Entry Placeholder="Write a translation (or click Translate to search)"
+                   Text="{Binding ContextTranslation}"
+                   FontSize="Small"/>
         </StackLayout>
-        <Button Text="Search Context Translation"
-                VerticalOptions="CenterAndExpand"
-                Clicked="SearchContextTranslation"/>
-
+        
         <Button Text="Add to collection"
                 VerticalOptions="CenterAndExpand"
-                Command="{Binding SaveWordCommand}"/>
+                Command="{Binding SaveWordCommand}"
+                HorizontalOptions="CenterAndExpand"/>
     </StackLayout>
 	
 </ContentPage>

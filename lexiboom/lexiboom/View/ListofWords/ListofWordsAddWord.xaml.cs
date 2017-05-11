@@ -13,8 +13,7 @@ namespace lexiboom.View.ListofWords
         public static MotherTongeWords MotherTongue;
 
         public ListofWordsAddWord (int indexOfThisLanguageInListOfLanguages)
-		{
-            
+		{            
             MotherTongue = new MotherTongeWords();
 			InitializeComponent ();
             MotherTongue.Type = App.Configuration.LanguageList[indexOfThisLanguageInListOfLanguages];

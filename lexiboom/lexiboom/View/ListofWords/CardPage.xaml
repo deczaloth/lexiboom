@@ -7,7 +7,7 @@
     <CarouselPage.ToolbarItems>
         <ToolbarItem Icon="Words_Translation"
                      Order="Primary"
-                     Activated="ShowOrHideWordsTanslations"> 
+                     Command="{Binding ShoworHideTranslationCommand}"> 
         </ToolbarItem>
     </CarouselPage.ToolbarItems>
     
@@ -17,24 +17,26 @@
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <Label x:Name="cardText"
                            Text="{Binding Word}"
+                           TextColor="#00d3d0"
                            FontSize="Large"
+                           FontAttributes="Bold"
                            HorizontalOptions="CenterAndExpand"/>
-                    <Label x:Name="WordTranslation"
-                           Text="Here goes the word Translation"
-                           TextColor="#00d0ff"
+                    <Label x:Name="{Binding WordTranslation}"
+                           Text="{Binding WordTranslation}"
                            HorizontalOptions="CenterAndExpand"
-                           BindingContext="{x:Static ViewModel:App.CardViewModel}"
-                           IsVisible="{Binding isTranslationVisible}"/>
+                           IsVisible="{Binding isTranslationVisible,
+                                               Source={x:Static ViewModel:App.CardViewModel}}"/>
                     <Label x:Name="cardContext"
                            Text="{Binding Context}"
                            FontSize="Medium"
+                           TextColor="#00d3d0"
+                           FontAttributes="Italic"
                            HorizontalOptions="CenterAndExpand"/>
                     <Label x:Name="ContextTranslation"
-                           Text="Here comes the Context Translation"
-                           TextColor="#00d0ff"
+                           Text="{Binding ContextTranslation}"
                            HorizontalOptions="CenterAndExpand"
-                           BindingContext="{x:Static ViewModel:App.CardViewModel}"
-                           IsVisible="{Binding isTranslationVisible}"/>
+                           IsVisible="{Binding isTranslationVisible,
+                                               Source={x:Static ViewModel:App.CardViewModel}}"/>
                 </StackLayout>
             </ContentPage>
         </DataTemplate>

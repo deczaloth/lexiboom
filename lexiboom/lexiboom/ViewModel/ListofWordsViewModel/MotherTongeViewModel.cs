@@ -110,12 +110,9 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
             }
             await Application.Current.MainPage.DisplayAlert("Word Saved!", "Your new word has been added. " + string.Format("Details: {0}", word.ToString()), "Ok");
             Word = ""; WordTranslation = ""; Context = ""; ContextTranslation = "";
-        }
-
-        
-
-        
+        }        
     }
+
     public class LanguageToPickerSelectedIndex : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
