@@ -19,12 +19,13 @@ namespace lexiboom.ViewModel
         {
             groups = new List<MasterPageMenuItem>
             {
-                new MasterPageMenuItem("List of Words"),
+                new MasterPageMenuItem("Lists of Words"),
                 new MasterPageMenuItem("Configuration")
 
             };
 
-            groups[0].Add(new MasterPageItem("Words", () => new ListofWords()));
+            groups[0].Add(new MasterPageItem("Word Cards", () => new ListofWords()));
+            groups[0].Add(new MasterPageItem("Word Quiz!", () => new WordQuizPage()));
             groups[1].Add(new MasterPageItem("Languages Configuration", () => new View.Configuration.Configuration()));
             
 

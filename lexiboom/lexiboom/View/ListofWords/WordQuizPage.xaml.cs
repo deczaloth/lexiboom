@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace lexiboom.View
+namespace lexiboom.View.ListofWords
 {
-	public partial class DetailPage : ContentPage
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class WordQuizPage : ContentPage
 	{
-		public DetailPage ()
+		public WordQuizPage ()
 		{
-            BackgroundColor = Color.FromHex("#351b00");
-
 			InitializeComponent ();
 		}
 	}

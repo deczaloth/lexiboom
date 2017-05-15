@@ -67,12 +67,19 @@ namespace lexiboom.View.ListofWords
 
         async void OnRemoveClicked(object sender, EventArgs e)
         {
-            bool answer = await DisplayAlert("Remove word?", "Are you sure you want to get rid of this word?", "Yes", "No");
-            if(answer)
+            if (listView.SelectedItem == null)
             {
-                await App.Storage.connection.DeleteAsync(listView.SelectedItem);
-                App.Storage.listofWordsList.Remove((MotherTongeWords)listView.SelectedItem);
-            }            
+                await DisplayAlert("Error", "No row was selected to be removed, did you miss something?", "Ok");
+            }
+            else
+            {
+                bool answer = await DisplayAlert("Remove word?", "Are you sure you want to get rid of this word?", "Yes", "No");
+                if (answer)
+                {
+                    await App.Storage.connection.DeleteAsync(listView.SelectedItem);
+                    App.Storage.listofWordsList.Remove((MotherTongeWords)listView.SelectedItem);
+                }
+            }                        
         }
 
         public async void TextCell_Tapped(object sender, EventArgs e)

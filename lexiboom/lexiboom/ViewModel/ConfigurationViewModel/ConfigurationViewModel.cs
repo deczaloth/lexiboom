@@ -11,12 +11,6 @@ namespace lexiboom.ViewModel.ConfigurationViewModel
 {
     public class ConfigurationViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
         public ConfigurationViewModel()
         {
             //addNewLanguageTappedCommand = new Command(AddNewLanguageTapped);
@@ -24,7 +18,7 @@ namespace lexiboom.ViewModel.ConfigurationViewModel
 
         public List<string> OptionsList = new List<string>
         {
-            "Add new language"
+            "Add new language", "Edit Language", "Move Words to other language"
         };
 
         public List<string> LanguageList = new List<string>();
@@ -34,6 +28,12 @@ namespace lexiboom.ViewModel.ConfigurationViewModel
         async void AddNewLanguageTapped()
         {
             await Application.Current.MainPage.DisplayAlert("Tapped!", "Succesfully recognized your tapping spirit!", "Ok");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

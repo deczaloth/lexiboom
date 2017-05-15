@@ -12,6 +12,7 @@ namespace lexiboom.View
         {
             Title = "Menu";
             Icon = "menu.png";
+            BackgroundColor = Color.FromHex("#00454f");
 
             Padding = new Thickness(10, 20);
 

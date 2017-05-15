@@ -21,7 +21,18 @@ namespace lexiboom.View.ListofWords
 			InitializeComponent ();
 		}
 
-        void OnSaveClicked(object sender, EventArgs args)
+        async void SearchWordTranslation(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new TranslatorWebSite(WordEntry.Text));
+        }
+
+        async void SearchContextTranslation(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new TranslatorWebSite(ContextEntry.Text));
+        }
+
+
+        async void OnSaveClicked(object sender, EventArgs args)
         {
             MotherTongeWords newItem = (MotherTongeWords)OldItem;
             newItem.Word = WordEntry.Text;
@@ -30,6 +41,8 @@ namespace lexiboom.View.ListofWords
             newItem.ContextTranslation = ContextTranslationEntry.Text;
 
             App.Storage.UpdateSQLiteItem(OldItem, newItem);
+
+            await Application.Current.MainPage.DisplayAlert("Word Saved!", "Your edition has been updated. " + string.Format("Details: {0}", newItem.ToString()), "Ok");
         }
 	}
 }

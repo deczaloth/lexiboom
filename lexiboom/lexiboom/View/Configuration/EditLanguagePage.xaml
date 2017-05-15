@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="lexiboom.View.Configuration.EditLanguagePage">
+    <StackLayout VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand">
+        <Label Text="Select the language to Edit"/>
+        <Picker Title="Tap here"
+                ItemsSource="{Binding LanguageList}"/>
+        <Label Text="Language Name"/>
+        <Entry Text="Selected Language"/>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Save Changes!"/>
+            <Button Text="Remove language"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

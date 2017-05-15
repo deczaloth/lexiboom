@@ -13,13 +13,14 @@
                        FontSize="Small"
                        HorizontalOptions="FillAndExpand"/>
                 <Button Text="Translate"
+                        Clicked="SearchWordTranslation"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="End"/>
             </StackLayout>
             <Label Text="Word Translation"
                    FontSize="Medium"/>
             <Entry x:Name="WordTranslationEntry" Placeholder="Write a translation (or click Translate to search)"
-                   Text=""
+                   Text="{Binding WordTranslation}"
                    FontSize="Small"/>
         </StackLayout>
 
@@ -29,16 +30,17 @@
                    TextColor="#00d3d0"/>
             <StackLayout Orientation="Horizontal">
                 <Entry x:Name="ContextEntry" Placeholder="Context in which you found the word."
-                       Text=""
+                       Text="{Binding Context}"
                        FontSize="Small"
                        HorizontalOptions="FillAndExpand"/>
                 <Button Text="Translate"
+                        Clicked="SearchContextTranslation"
                         HorizontalOptions="End"/>
             </StackLayout>
             <Label Text="Context Translation"
                    FontSize="Medium"/>
             <Entry x:Name="ContextTranslationEntry" Placeholder="Write a translation (or click Translate to search)"
-                   Text=""
+                   Text="{Binding ContextTranslation}"
                    FontSize="Small"/>
         </StackLayout>
 
