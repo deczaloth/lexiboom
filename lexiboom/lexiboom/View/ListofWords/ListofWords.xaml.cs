@@ -22,10 +22,10 @@ namespace lexiboom.View.ListofWords
             BindingContext = App.Storage.listofWordsList;
             languageSelectorPicker.BindingContext = App.MotherTonge;
 
-            if (App.Configuration.LanguageList.Count>=1)
+            if (App.Configuration.LanguagesNameList.Count>=1)
             {
-                for (int i = 0; i < App.Configuration.LanguageList.Count; i++)
-                    languageSelectorPicker.Items.Add(App.Configuration.LanguageList[i]);
+                for (int i = 0; i < App.Configuration.LanguagesNameList.Count; i++)
+                    languageSelectorPicker.Items.Add(App.Configuration.LanguagesNameList[i]);
                 languageSelectorPicker.IsVisible = true;
                 languageSelectorPicker.SelectedIndex = 0;
             }
@@ -55,7 +55,7 @@ namespace lexiboom.View.ListofWords
 
         async void OnAddClicked(object sender, EventArgs e)
         {
-            if (App.Configuration.LanguageList.Count >= 1)
+            if (App.Configuration.LanguagesNameList.Count >= 1)
             {
                 if (languageSelectorPicker.SelectedItem != null)
                     await Navigation.PushAsync(new ListofWordsAddWord(languageSelectorPicker.SelectedIndex));

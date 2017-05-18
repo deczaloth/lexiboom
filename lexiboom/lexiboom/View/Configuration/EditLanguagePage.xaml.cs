@@ -16,6 +16,11 @@ namespace lexiboom.View.Configuration
 		{
 			InitializeComponent ();
             BindingContext = App.Configuration;
-		}
+
+            for (int i = 0; i < App.Configuration.LanguagesNameList.Count; i++)
+            {
+                LanguagePicker.Items.Add(App.Configuration.LanguagesNameList[i]);
+            }
+        }
 	}
 }

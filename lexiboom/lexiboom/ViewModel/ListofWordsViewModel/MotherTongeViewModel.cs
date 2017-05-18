@@ -117,15 +117,19 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (App.Configuration.LanguageList.Count >= 1)
-                return App.Configuration.LanguageList.IndexOf((string)value);
+            if (App.Configuration.LanguagesNameList.Count >= 1)
+                return App.Configuration.LanguagesNameList.IndexOf((string)value);
             else return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (App.Configuration.LanguageList.Count >= 1)
-                return App.Configuration.LanguageList[Int16.Parse(value.ToString())];
+            int index = Int16.Parse(value.ToString());
+
+            if (App.Configuration.LanguagesNameList.Count >= 1 && index > -1)
+            {
+                return App.Configuration.LanguagesNameList[index];
+            }
             else return false;
         }
     }

@@ -16,7 +16,7 @@ namespace lexiboom.View.ListofWords
 		{            
             MotherTongue = new MotherTongeWords();
 			InitializeComponent ();
-            MotherTongue.Type = App.Configuration.LanguageList[indexOfThisLanguageInListOfLanguages];
+            MotherTongue.Type = App.Configuration.LanguagesNameList[indexOfThisLanguageInListOfLanguages];
 		}
 
         async void SearchWordTranslation(object sender, EventArgs args)

@@ -19,9 +19,13 @@ namespace lexiboom.Model.Storage
                     query.ToListAsync().ContinueWith(t =>
                     {
                         foreach (var word in t.Result)
-                            App.Configuration.LanguageList.Add(word.Type);
-                        foreach (var word in App.Storage.listofWordsList)
-                            Console.WriteLine("palabra: {0}", word.ToString());
+                        {
+                            if(!App.Configuration.LanguagesNameList.Contains(word.Type))
+                                App.Configuration.LanguagesNameList.Add(word.Type);
+                            if(!App.Storage.LanguagesList.Contains(word))
+                                App.Storage.LanguagesList.Add(word);
+                        }
+                            
                     });
                 }
                 catch (NullReferenceException e)
@@ -37,9 +41,8 @@ namespace lexiboom.Model.Storage
                     query.ToListAsync().ContinueWith(t =>
                     {
                         foreach (var word in t.Result)
-                            App.Storage.listofWordsList.Add(word);
-                        foreach (var word in App.Storage.listofWordsList)
-                            Console.WriteLine("palabra: {0}", word.ToString());
+                            if(!App.Storage.listofWordsList.Contains(word))
+                                App.Storage.listofWordsList.Add(word);
                     });
                 }
                 catch (NullReferenceException e)

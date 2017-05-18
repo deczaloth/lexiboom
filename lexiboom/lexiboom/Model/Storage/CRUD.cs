@@ -9,10 +9,24 @@ namespace lexiboom.Model.Storage
     {
         public void UpdateSQLiteItem(object oldItem, object newItem)
         {
-            connection.UpdateAsync((MotherTongeWords)oldItem).ContinueWith(t =>
+            string TypeOfOldItem = oldItem.GetType().Name;
+            switch(TypeOfOldItem)
             {
-                oldItem = (MotherTongeWords)newItem;
-            });
+                case nameof(MotherTongeBase):
+                    connection.UpdateAsync((MotherTongeBase)oldItem).ContinueWith(t =>
+                    {
+                        oldItem = (MotherTongeBase)newItem;
+                    });
+                    break;
+                case nameof(MotherTongeWords):
+                    connection.UpdateAsync((MotherTongeWords)oldItem).ContinueWith(t =>
+                    {
+                        oldItem = (MotherTongeWords)newItem;
+                    });
+                    break;
+            }
+                
+            
         }
     }
 }

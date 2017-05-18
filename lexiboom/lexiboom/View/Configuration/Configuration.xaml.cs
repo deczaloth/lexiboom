@@ -43,7 +43,7 @@ namespace lexiboom.View.Configuration
                     {
                         Console.WriteLine("Error mio");
                     }
-                    App.Configuration.LanguageList.Add(newLanguage.Text);
+                    App.Configuration.LanguagesNameList.Add(newLanguage.Text);
                     await DisplayAlert("Language added!", "Your new language has been successfuly added. You can now go to \"Words\" section and select it to start adding words. Boom!", "Ok");
                 }
                 listView.SelectedItem = null;
@@ -51,7 +51,7 @@ namespace lexiboom.View.Configuration
             #endregion
             else if((string)listView.SelectedItem == "Edit Language")
             {
-                if (App.Configuration.LanguageList.Count == 0)
+                if (App.Configuration.LanguagesNameList.Count == 0)
                     await DisplayAlert("Error!", "It seems that you have not added any language. Tap on \"Add new language\" to start your lexiboom adventure!", "Ok");
                 else
                     await Navigation.PushAsync(new EditLanguagePage());

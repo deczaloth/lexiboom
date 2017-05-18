@@ -14,12 +14,15 @@ namespace lexiboom
         public static ViewModel.ListofWordsViewModel.CardsViewModel CardViewModel;
         public static ViewModel.ListofWordsViewModel.MotherTongeWords MotherTonge;
         public static ViewModel.ConfigurationViewModel.ConfigurationViewModel Configuration;
+        public static ViewModel.ConfigurationViewModel.EditLanguageViewModel EditLanguage;
+        
         public static Model.Storage.Storage Storage;
 		public App ()
 		{
             CardViewModel = new ViewModel.ListofWordsViewModel.CardsViewModel();
             MotherTonge = new ViewModel.ListofWordsViewModel.MotherTongeWords();
             Configuration = new ViewModel.ConfigurationViewModel.ConfigurationViewModel();
+            EditLanguage = new ViewModel.ConfigurationViewModel.EditLanguageViewModel();
             Storage = new Model.Storage.Storage();
 
             // The root page of your application

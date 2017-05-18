@@ -14,6 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Query.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Storage\Storage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ConfigurationViewModel\ConfigurationViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ConfigurationViewModel\EditLanguageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\CardsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\MotherTongeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListofWordsViewModel\MotherTongeViewModelBase.cs" />
