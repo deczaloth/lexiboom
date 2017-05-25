@@ -122,7 +122,7 @@ namespace lexiboom.View.ListofWords
             listView.SelectedItem = null;
             App.Storage.listofWordsList.Clear();
             //if(languageSelectorPicker.SelectedItem!= null)
-                App.Storage.Query(languageSelectorPicker.SelectedItem.ToString());
+            Task.Run(async () => await App.Storage.Query(languageSelectorPicker.SelectedItem.ToString()));
         }
     }
 }

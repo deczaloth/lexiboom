@@ -4,19 +4,20 @@ using System.Text;
 
 using SQLite;
 using lexiboom.ViewModel.ListofWordsViewModel;
+using System.Threading.Tasks;
 
 namespace lexiboom.Model.Storage
 {
     public partial class Storage
     {
-        public void Query(string KeyToQuery)
+        public async Task Query(string KeyToQuery)
         {
             if (KeyToQuery == "QueryLanguages")
             {
                 var query = connection.Table<MotherTongeBase>();
                 try
                 {
-                    query.ToListAsync().ContinueWith(t =>
+                    await query.ToListAsync().ContinueWith(t =>
                     {
                         foreach (var word in t.Result)
                         {
@@ -38,7 +39,7 @@ namespace lexiboom.Model.Storage
                 var query = connection.Table<MotherTongeWords>().Where(v => v.Type == KeyToQuery);
                 try
                 {
-                    query.ToListAsync().ContinueWith(t =>
+                    await query.ToListAsync().ContinueWith(t =>
                     {
                         foreach (var word in t.Result)
                             if(!App.Storage.listofWordsList.Contains(word))

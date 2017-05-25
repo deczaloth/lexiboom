@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using lexiboom.ViewModel.ListofWordsViewModel;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace lexiboom.ViewModel.ConfigurationViewModel
 {
@@ -13,16 +15,16 @@ namespace lexiboom.ViewModel.ConfigurationViewModel
         public ConfigurationViewModel()
         {
             //addNewLanguageTappedCommand = new Command(AddNewLanguageTapped);
-            saveEditLanguageChangesCommand = new Command(saveEditLanguageChanges);
+            saveEditLanguageChangesCommand = new Command(async (sender) => await saveEditLanguageChanges(sender));
             removeLanguageCommand = new Command(removeLangauge);
         }
+        
+        public ObservableCollection<string> LanguagesNameList = new ObservableCollection<string>();
 
         public List<string> OptionsList = new List<string>
         {
             "Add new language", "Edit Language", "Move Words to other language"
         };
-
-        public List<string> LanguagesNameList = new List<string>();
 
         public Command addNewLanguageTappedCommand { get; }
         public Command saveEditLanguageChangesCommand { get; }
@@ -33,28 +35,33 @@ namespace lexiboom.ViewModel.ConfigurationViewModel
             await Application.Current.MainPage.DisplayAlert("Tapped!", "Succesfully recognized your tapping spirit!", "Ok");
         }
 
-        void saveEditLanguageChanges(object LanguageEditing)
+        async Task saveEditLanguageChanges(object LanguageEditing)
         {
-            App.Storage.Query(((EditLanguageViewModel)LanguageEditing).oldLanguageName);
-            App.Storage.Query("QueryLanguages");
+            await App.Storage.Query(((EditLanguageViewModel)LanguageEditing).oldLanguageName);
+            await App.Storage.Query("QueryLanguages");
 
             for (int i = 0; i < App.Storage.listofWordsList.Count; i++)
             {
-
-                MotherTongeWords EditedWord = (MotherTongeWords)App.Storage.listofWordsList[i];
-                EditedWord.Type = ((EditLanguageViewModel)LanguageEditing).newLanguageName;
-                App.Storage.UpdateSQLiteItem(App.Storage.listofWordsList[i], EditedWord);
+                if(App.Storage.listofWordsList[i].Type == ((EditLanguageViewModel)LanguageEditing).oldLanguageName)
+                {
+                    MotherTongeWords EditedWord = (MotherTongeWords)App.Storage.listofWordsList[i];
+                    EditedWord.Type = ((EditLanguageViewModel)LanguageEditing).newLanguageName;
+                    await App.Storage.UpdateSQLiteItem(App.Storage.listofWordsList[i], EditedWord);
+                }                
             }
             for (int i = 0; i < App.Storage.LanguagesList.Count; i++)
             {
-                MotherTongeBase EditedLanguageObject = (MotherTongeBase)App.Storage.LanguagesList[i];
-                EditedLanguageObject.Type = ((EditLanguageViewModel)LanguageEditing).newLanguageName;
-                App.Storage.UpdateSQLiteItem(App.Storage.LanguagesList[i], EditedLanguageObject);
+                if (App.Storage.LanguagesList[i].Type == ((EditLanguageViewModel)LanguageEditing).oldLanguageName)
+                {
+                    MotherTongeBase EditedLanguageObject = (MotherTongeBase)App.Storage.LanguagesList[i];
+                    EditedLanguageObject.Type = ((EditLanguageViewModel)LanguageEditing).newLanguageName;
+                    await App.Storage.UpdateSQLiteItem(App.Storage.LanguagesList[i], EditedLanguageObject);
+                }
+                    
             }
 
             App.Storage.LanguagesList.Clear(); App.Storage.listofWordsList.Clear(); App.Configuration.LanguagesNameList.Clear();
-            App.Storage.Query(((EditLanguageViewModel)LanguageEditing).oldLanguageName);
-            App.Storage.Query("QueryLanguages");
+            await App.Storage.Query("QueryLanguages");
         }
 
         void removeLangauge()
