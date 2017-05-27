@@ -16,9 +16,8 @@ namespace lexiboom.View.ListofWords
         string palabra="";
 
         public ListofWords ()
-		{            
+		{
 			InitializeComponent ();
-
             BindingContext = App.Storage.listofWordsList;
             languageSelectorPicker.BindingContext = App.MotherTonge;
 
@@ -28,13 +27,20 @@ namespace lexiboom.View.ListofWords
                     languageSelectorPicker.Items.Add(App.Configuration.LanguagesNameList[i]);
                 languageSelectorPicker.IsVisible = true;
                 languageSelectorPicker.SelectedIndex = 0;
-            }
-            
-            //App.Storage.Query();
+            }            
 		}
+
+        void OnRefresh(object sender, EventArgs args)
+        {
+            listView.ItemsSource = null;
+            Task.Delay(1000);
+            listView.ItemsSource = App.Storage.listofWordsList;
+            listView.IsRefreshing = false;
+        }
 
         async void OnCardsClicked(object sender, EventArgs args)
         {
+            App.CardViewModel.isTranslationVisible = false;
             if (listView.SelectedItem != null)  
                 await Navigation.PushAsync(new CardPage((MotherTongeWords)listView.SelectedItem));
             else

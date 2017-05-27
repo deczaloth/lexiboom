@@ -14,25 +14,28 @@
         <ToolbarItem Text="Cards"
                      Order="Primary"
                      Activated="OnCardsClicked"/>
-        <ToolbarItem Text="Edit"
-                     Order="Primary"
-                     Activated="OnEditClicked"/>
         <ToolbarItem Text="+"
                      Order="Primary"
                      Activated="OnAddClicked"/>
-        <ToolbarItem Text="-"
-                     Order="Primary"
-                     Activated="OnRemoveClicked"/>
     </ContentPage.ToolbarItems>
     
     <StackLayout>
         <ListView x:Name="listView"
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="OnRefresh"
                   ItemsSource="{Binding .}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Word}" 
                               Detail="{Binding Context}"
-                              Tapped="TextCell_Tapped"/>
+                              Tapped="TextCell_Tapped">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Edit"
+                                      Clicked="OnEditClicked"/>
+                            <MenuItem Text="Delete"
+                                      Clicked="OnRemoveClicked"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
