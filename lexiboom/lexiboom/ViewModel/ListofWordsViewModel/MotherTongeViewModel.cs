@@ -17,18 +17,21 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
     {
         public MotherTongeWords()
         {
+            IsWordEmptyCommand = new Command(IsWordEmpty);
             SaveWordCommand = new Command(async ()=> await SaveWord());
             OnAddClickedCommand = new Command((sender)=> OnAddClicked(sender));
         }
 
         //public static ObservableCollection<MotherTongeWords> listofWordsList = new ObservableCollection<MotherTongeWords>();
-        public string _Word;
+        private string _Word = "";
         public string Word
         {
             get { return _Word; }
             set
             {
                 _Word = value;
+
+                isWordNonEmpty = value.Length != 0;
 
                 OnPropertyChanged();
             }
@@ -71,12 +74,26 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         }
 
         public int Points { get; set; }
-        
+
+        private bool _isWordNonEmpty;
+        public bool isWordNonEmpty
+        {
+            get { return _isWordNonEmpty; }
+            set
+            {
+                _isWordNonEmpty = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         public override string ToString()
         {
             return string.Format("{0}: {1}; Id: {2}; Type: {3}; Points: {4}", Word, Context, Id, Type, Points);
         }
 
+        [Ignore]
+        public Command IsWordEmptyCommand { get; }
         [Ignore]
         public Command SaveWordCommand { get; }
         [Ignore]
@@ -84,9 +101,13 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         [Ignore]
         public Command OnAddClickedCommand { get; set; }
 
+        void IsWordEmpty()
+        {
+            isWordNonEmpty = Word.Length != 0;
+        }
+
         async void OnAddClicked(object sender)
         {
-            
             //await Application.Current.MainPage.Navigation.PushAsync(new ListofWordsAddWord());
         }
 

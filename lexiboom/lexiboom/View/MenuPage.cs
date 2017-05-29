@@ -36,8 +36,8 @@ namespace lexiboom.View
                     OnMenuSelect(masterPageItemPage);
                 }
             };
-
-            Content = listView;
+            
+                Content = listView;
         }
     }
 }

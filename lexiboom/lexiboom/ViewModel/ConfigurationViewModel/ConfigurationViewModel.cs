@@ -21,6 +21,18 @@ namespace lexiboom.ViewModel.ConfigurationViewModel
         
         public ObservableCollection<string> LanguagesNameList = new ObservableCollection<string>();
 
+        private bool _isPresented;
+        public bool isPresented
+        {
+            get { return _isPresented; }
+            set
+            {
+                _isPresented = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         public List<string> OptionsList = new List<string>
         {
             "Add new language", "Edit Language", "Move Words to other language"

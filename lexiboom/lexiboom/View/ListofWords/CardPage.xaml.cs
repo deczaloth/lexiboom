@@ -14,6 +14,14 @@ namespace lexiboom.View.ListofWords
 
             ItemsSource = App.Storage.listofWordsList;
             SelectedItem = word;
+
+            
+        }
+
+        protected override void OnCurrentPageChanged()
+        {
+            App.CardViewModel.OnAppearingCommand.Execute(null);
+            base.OnCurrentPageChanged();
         }
     }
 }

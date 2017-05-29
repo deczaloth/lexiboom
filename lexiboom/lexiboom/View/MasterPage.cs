@@ -9,19 +9,20 @@ namespace lexiboom.View
     {
         public MasterDetail()
         {
+            BindingContext = App.Configuration;
             MasterBehavior = MasterBehavior.Popover;
-            IsPresented = true;
-            //BindingContext = App.TablePageViewModel;
-            //this.SetBinding(IsPresentedProperty, "NotPulling");
+            this.SetBinding(IsPresentedProperty, "isPresented");
+            App.Configuration.isPresented = true;
 
             var menuPage = new MenuPage();
 
             menuPage.OnMenuSelect = (masterPageItemPage) =>
             {
                 Detail = new NavigationPage(masterPageItemPage);
-                IsPresented = false;
+                this.SetBinding(IsPresentedProperty, "isPresented");
+                App.Configuration.isPresented = false;
             };
-
+            
             Master = menuPage;
             Detail = new NavigationPage(new DetailPage());
         }

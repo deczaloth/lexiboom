@@ -21,6 +21,11 @@ namespace lexiboom.Droid
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new lexiboom.App ());
 		}
-	}
+
+        public override void OnBackPressed()
+        {
+            App.Configuration.isPresented = !App.Configuration.isPresented;
+        }
+    }
 }
 

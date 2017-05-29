@@ -12,6 +12,7 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         public CardsViewModel()
         {
             ShoworHideTranslationCommand = new Command(ShowOrHideTranslation);
+            OnAppearingCommand = new Command(OnAppearingMethod);
         }
 
         private bool _isTranslationVisible;
@@ -27,7 +28,14 @@ namespace lexiboom.ViewModel.ListofWordsViewModel
         }
 
         [Ignore]
+        public Command OnAppearingCommand { get; }
+        [Ignore]
         public Command ShoworHideTranslationCommand { get; }
+
+        public void OnAppearingMethod()
+        {
+            App.CardViewModel.isTranslationVisible = false;
+        }
 
         void ShowOrHideTranslation()
         {
